@@ -1,12 +1,8 @@
 'use client'
 
-import { Stack, Text, Button } from '@primer/react'
-
 const LINKS = [
-  { label: 'Work', slide: 1 },
-  { label: 'Approach', slide: 2 },
-  { label: 'Services', slide: 3 },
-  { label: 'Contact', slide: 5 },
+  { label: 'Casos', slide: 1 },
+  { label: 'Contato', slide: 5 },
 ]
 
 export function GalleryNav({
@@ -16,81 +12,43 @@ export function GalleryNav({
   activeIndex: number
   onNavigate: (index: number) => void
 }) {
-  const scrolled = activeIndex > 0
-
   return (
-    <header
-      style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 40,
-        backgroundColor: scrolled ? 'var(--overlay-bgColor, var(--bgColor-default))' : 'transparent',
-        backdropFilter: scrolled ? 'blur(12px)' : 'none',
-        WebkitBackdropFilter: scrolled ? 'blur(12px)' : 'none',
-        borderBottom: scrolled
-          ? '1px solid var(--borderColor-muted)'
-          : '1px solid transparent',
-        transition:
-          'background-color 0.4s ease, border-color 0.4s ease, backdrop-filter 0.4s ease',
-      }}
-    >
-      <Stack
-        direction="horizontal"
-        justify="space-between"
-        align="center"
-        style={{
-          maxWidth: 'var(--breakpoint-xlarge, 1280px)',
-          margin: '0 auto',
-          paddingInline: 'var(--base-size-24)',
-          paddingBlock: 'var(--base-size-16)',
-        }}
-      >
+    <header className="pointer-events-none fixed inset-x-0 top-0 z-40 mix-blend-difference">
+      <div className="flex items-center justify-between px-6 py-5 md:px-10 md:py-7">
         <button
           type="button"
           onClick={() => onNavigate(0)}
-          aria-label="ZCompany home"
-          style={{
-            background: 'none',
-            border: 'none',
-            cursor: 'pointer',
-            padding: 0,
-          }}
+          aria-label="zcompany — início"
+          className="pointer-events-auto cursor-pointer border-none bg-transparent p-0"
         >
-          <Text
-            weight="semibold"
-            style={{
-              fontFamily: 'var(--fontStack-monospace)',
-              fontSize: 'var(--text-body-size-large)',
-              letterSpacing: '0.06em',
-              color: 'var(--fgColor-default)',
-            }}
-          >
-            ZCO
-          </Text>
+          <span className="font-serif text-xl italic tracking-tight text-white">
+            zcompany
+          </span>
         </button>
 
-        <nav aria-label="Gallery sections">
-          <Stack direction="horizontal" gap="spacious" align="center">
+        <nav aria-label="Seções" className="pointer-events-auto">
+          <div className="flex items-center gap-8">
+            <span className="hidden items-center gap-2 md:flex">
+              <span className="zc-pulse block size-1.5 rounded-full bg-white" />
+              <span className="text-[0.7rem] uppercase tracking-[0.18em] text-white/60">
+                Aceitando projetos
+              </span>
+            </span>
             {LINKS.map((link) => (
               <button
                 key={link.label}
                 type="button"
-                className="zco-link"
+                className="zc-link text-white"
+                style={{ color: activeIndex === link.slide ? '#fff' : 'rgba(255,255,255,0.55)' }}
                 data-active={activeIndex === link.slide}
                 onClick={() => onNavigate(link.slide)}
               >
                 {link.label}
               </button>
             ))}
-          </Stack>
+          </div>
         </nav>
-
-        <Button variant="primary" onClick={() => onNavigate(5)}>
-          Start a Project
-        </Button>
-      </Stack>
+      </div>
     </header>
   )
 }

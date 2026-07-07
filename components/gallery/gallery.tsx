@@ -4,20 +4,20 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { GalleryNav } from './nav'
 import { GalleryProgress } from './progress'
-import { HeroSlide } from '@/components/slides/hero-slide'
-import { MeridianSlide } from '@/components/slides/meridian-slide'
-import { AuroraSlide } from '@/components/slides/aurora-slide'
-import { VaultSlide } from '@/components/slides/vault-slide'
-import { KineticSlide } from '@/components/slides/kinetic-slide'
-import { ContactSlide } from '@/components/slides/contact-slide'
+import { ManifestoSlide } from '@/components/slides/manifesto-slide'
+import { AdvocaciaSlide } from '@/components/slides/advocacia-slide'
+import { OdontoSlide } from '@/components/slides/odonto-slide'
+import { GastroSlide } from '@/components/slides/gastro-slide'
+import { DashboardSlide } from '@/components/slides/dashboard-slide'
+import { ContatoSlide } from '@/components/slides/contato-slide'
 
 const SLIDE_LABELS = [
-  'ZCompany',
-  'Meridian',
-  'Aurora',
-  'Vault',
-  'Kinetic',
-  'Contact',
+  'Estúdio',
+  'Advocacia',
+  'Odontologia',
+  'Gastronomia',
+  'Dashboard',
+  'Contato',
 ]
 
 const TRANSITION = 1.0 // seconds
@@ -183,12 +183,12 @@ export function Gallery() {
 
   return (
     <main
-      aria-label="ZCompany — gallery of living landing pages"
+      aria-label="zcompany — galeria de páginas vivas"
       style={{
         position: 'fixed',
         inset: 0,
         overflow: 'hidden',
-        backgroundColor: 'var(--bgColor-default)',
+        backgroundColor: 'var(--color-background)',
       }}
     >
       <GalleryNav activeIndex={activeIndex} onNavigate={goTo} />
@@ -199,22 +199,22 @@ export function Gallery() {
       />
 
       <section ref={setSlideRef(0)} style={slideStyle} aria-hidden={activeIndex !== 0}>
-        <HeroSlide onExplore={() => goTo(1)} />
+        <ManifestoSlide onExplore={() => goTo(1)} />
       </section>
       <section ref={setSlideRef(1)} style={slideStyle} aria-hidden={activeIndex !== 1}>
-        <MeridianSlide />
+        <AdvocaciaSlide />
       </section>
       <section ref={setSlideRef(2)} style={slideStyle} aria-hidden={activeIndex !== 2}>
-        <AuroraSlide active={activeIndex === 2} />
+        <OdontoSlide />
       </section>
       <section ref={setSlideRef(3)} style={slideStyle} aria-hidden={activeIndex !== 3}>
-        <VaultSlide />
+        <GastroSlide />
       </section>
       <section ref={setSlideRef(4)} style={slideStyle} aria-hidden={activeIndex !== 4}>
-        <KineticSlide />
+        <DashboardSlide active={activeIndex === 4} />
       </section>
       <section ref={setSlideRef(5)} style={slideStyle} aria-hidden={activeIndex !== 5}>
-        <ContactSlide />
+        <ContatoSlide />
       </section>
     </main>
   )

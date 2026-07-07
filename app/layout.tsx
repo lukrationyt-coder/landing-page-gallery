@@ -1,11 +1,26 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
+import { Fraunces, Geist } from 'next/font/google'
 import './globals.css'
-import { Providers } from '@/components/providers'
+
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  axes: ['opsz', 'SOFT', 'WONK'],
+})
+
+const geist = Geist({
+  subsets: ['latin'],
+  variable: '--font-geist',
+})
 
 export const metadata: Metadata = {
-  title: 'ZCompany — Digital Atelier',
+  title: 'zcompany — estúdio digital',
   description:
-    'A gallery of living landing pages. Scroll through complete, interactive cases crafted by the ZCompany studio.',
+    'Um atelier de páginas vivas. Landing pages, sites e dashboards desenhados como peças únicas — role e veja cada caso em tela cheia.',
+}
+
+export const viewport: Viewport = {
+  themeColor: '#0b0a09',
 }
 
 export default function RootLayout({
@@ -15,15 +30,10 @@ export default function RootLayout({
 }) {
   return (
     <html
-      lang="en"
-      data-color-mode="dark"
-      data-light-theme="light"
-      data-dark-theme="dark"
-      suppressHydrationWarning
+      lang="pt-BR"
+      className={`bg-background ${fraunces.variable} ${geist.variable}`}
     >
-      <body suppressHydrationWarning>
-        <Providers>{children}</Providers>
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   )
 }

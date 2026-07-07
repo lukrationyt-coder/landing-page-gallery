@@ -11,38 +11,23 @@ export function GalleryProgress({
 }) {
   return (
     <nav
-      aria-label="Gallery progress"
-      style={{
-        position: 'fixed',
-        right: 'var(--base-size-24)',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        zIndex: 40,
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 'var(--base-size-8)',
-        alignItems: 'flex-end',
-      }}
+      aria-label="Progresso da galeria"
+      className="fixed top-1/2 right-4 z-40 hidden -translate-y-1/2 flex-col items-end gap-2 mix-blend-difference sm:flex md:right-8"
     >
       {labels.map((label, i) => (
         <button
           key={label}
           type="button"
-          className="zco-dot"
+          className="zc-dot"
           data-active={activeIndex === i}
           onClick={() => onNavigate(i)}
-          aria-label={`Go to ${label}`}
+          aria-label={`Ir para ${label}`}
           aria-current={activeIndex === i ? 'true' : undefined}
         >
-          <span
-            style={{
-              fontFamily: 'var(--fontStack-monospace)',
-              fontSize: 'var(--text-caption-size)',
-            }}
-          >
+          <span className="font-mono text-[0.65rem] tracking-widest text-white/70">
             {String(i + 1).padStart(2, '0')}
           </span>
-          <span className="zco-dot-bar" aria-hidden="true" />
+          <span className="zc-dot-bar" aria-hidden="true" />
         </button>
       ))}
     </nav>
