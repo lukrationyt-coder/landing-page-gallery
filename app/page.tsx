@@ -1,5 +1,5 @@
-import { Gallery } from '@/components/gallery/gallery'
+import { Stage } from '@/components/stage/stage'
 
 export default function Home() {
-  return <Gallery />
+  return <Stage />
 }
