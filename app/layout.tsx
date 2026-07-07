@@ -14,13 +14,13 @@ const geist = Geist({
 })
 
 export const metadata: Metadata = {
-  title: 'zcompany — estúdio digital',
+  title: 'zcompany',
   description:
-    'Um atelier de páginas vivas. Landing pages, sites e dashboards desenhados como peças únicas — role e veja cada caso em tela cheia.',
+    'Design que parece caro — porque é. Páginas, sites e dashboards vivos, desenhados como peças únicas.',
 }
 
 export const viewport: Viewport = {
-  themeColor: '#0b0a09',
+  themeColor: '#08080a',
 }
 
 export default function RootLayout({
